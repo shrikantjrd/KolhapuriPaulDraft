@@ -57,11 +57,11 @@ export const PRODUCTS: Product[] = [
     category: 'New Arrival',
     description: "Inspired by the divine beauty of the Mahalaxmi Ambabai Temple, this premium masterpiece features a soft, hand-carved floral leather center motif. Embellished with fine gold tilla hand-embroidery and a rich natural-tan base, it is an exquisite blend of devotion and traditional luxury.",
     images: {
-      front: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      side: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      back: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      closeup: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      lifestyle: "/images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      side: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      back: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      closeup: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
     },
     sizes: [5, 6, 7, 8, 9],
     specifications: {
@@ -88,11 +88,11 @@ export const PRODUCTS: Product[] = [
     category: 'Wedding',
     description: "A celebration of regal Indian craftsmanship, the Royal Wedding sandal is woven with premium gold-leaf leather cords. Designed for brides and high-festive celebrations, this pair utilizes our softest triple-cushioned leather sole and double-bound borders for day-long bridal luxury.",
     images: {
-      front: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      side: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      back: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      closeup: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      lifestyle: "/images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      side: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      back: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      closeup: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
     },
     sizes: [5, 6, 7, 8, 9],
     specifications: {
@@ -119,11 +119,11 @@ export const PRODUCTS: Product[] = [
     category: 'Classic',
     description: "The timeless flat that started it all. Featuring the standard hand-stitched leather strap, double-row hand punch work, and dyed a rich walnut hue using local organic barks. It produces the classic wooden sound upon stepping and is a beautiful nod to true legacy fashion.",
     images: {
-      front: "/images/kolhapuri_tan_open_1784182943658.jpg",
-      side: "/images/kolhapuri_tan_open_1784182943658.jpg",
-      back: "/images/kolhapuri_tan_open_1784182943658.jpg",
-      closeup: "/images/kolhapuri_tan_open_1784182943658.jpg",
-      lifestyle: "/images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/kolhapuri_tan_open_1784182943658.jpg",
+      side: "./images/kolhapuri_tan_open_1784182943658.jpg",
+      back: "./images/kolhapuri_tan_open_1784182943658.jpg",
+      closeup: "./images/kolhapuri_tan_open_1784182943658.jpg",
+      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
     },
     sizes: [6, 7, 8, 9],
     specifications: {
@@ -150,11 +150,11 @@ export const PRODUCTS: Product[] = [
     category: 'Premium',
     description: "Honoring the legendary Peshwa royalty, this premium sandal is distinguished by a deep hand-dyed crimson leather strap. Adorned with dual-braided golden trims and a slightly raised, ergonomic heel, this pair exudes unmatched confidence and pride.",
     images: {
-      front: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      side: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      back: "/images/kolhapuri_royal_banner_1784182889076.jpg",
-      closeup: "/images/kolhapuri_red_pompom_1784182929447.jpg",
-      lifestyle: "/images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      side: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      back: "./images/kolhapuri_royal_banner_1784182889076.jpg",
+      closeup: "./images/kolhapuri_red_pompom_1784182929447.jpg",
+      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
     },
     sizes: [5, 6, 7, 8, 9],
     specifications: {
@@ -181,11 +181,11 @@ export const PRODUCTS: Product[] = [
     category: 'Premium',
     description: "Inspired by the warm golden-hour sunset over the Rankala Lake, the Karveer Golden sandal features custom multi-braid straps and subtle copper embroidery. Lightweight, flexible, and featuring a velvety soft suede-lined inner strap, it is crafted for the modern, fast-paced woman.",
     images: {
-      front: "/images/kolhapuri_cream_flower_1784182909014.jpg",
-      side: "/images/kolhapuri_cream_flower_1784182909014.jpg",
-      back: "/images/kolhapuri_cream_flower_1784182909014.jpg",
-      closeup: "/images/kolhapuri_cream_flower_1784182909014.jpg",
-      lifestyle: "/images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/kolhapuri_cream_flower_1784182909014.jpg",
+      side: "./images/kolhapuri_cream_flower_1784182909014.jpg",
+      back: "./images/kolhapuri_cream_flower_1784182909014.jpg",
+      closeup: "./images/kolhapuri_cream_flower_1784182909014.jpg",
+      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
     },
     sizes: [5, 6, 7, 8, 9],
     specifications: {
@@ -233,7 +233,7 @@ export const BLOGS: BlogPost[] = [
     date: "July 16, 2026",
     readTime: "4 mins read",
     category: "Heritage",
-    image: "/images/kolhapuri_royal_banner_1784182889076.jpg",
+    image: "./images/kolhapuri_royal_banner_1784182889076.jpg",
     content: "Kolhapuri Paul is born from a desire to preserve the pristine legacy of 800 years of royal leather crafting from the historic city of Kolhapur, Maharashtra.\n\nOur story is woven in the lanes of Rankala and Karveer, where families of master artisans have kept the traditional methods alive across multiple generations. Every chappal represents hundreds of precise cuts, a month-long organic babool-bark tanning process, and a signature castor-oil finish that gives the leather its rich tone and incredible longevity.\n\nWe bridge the gap between historic royalty and contemporary elegance, bringing true heirloom luxury to discerning feet worldwide."
   },
   {
@@ -243,7 +243,7 @@ export const BLOGS: BlogPost[] = [
     date: "July 12, 2026",
     readTime: "5 mins read",
     category: "Craftsmanship",
-    image: "/images/artisan_stitching_close_1784188217493.jpg",
+    image: "./images/artisan_stitching_close_1784188217493.jpg",
     content: "True craftsmanship has no shortcut. At Kolhapuri Paul, we don't use high-speed automated sewing machines or metal nails. Instead, every single sandal is built using centuries-old manual techniques.\n\nFirst, the heavy buffalo hide is selected for structural strength, then cut by hand using a traditional curved cutter called an 'Aari'. Second, the straps are braided in complete silence, requiring intense focus to ensure symmetry. Third, the pieces are hand-stitched directly into the sole using durable local sisal cord, forming a strong, flexible lock-stitch.\n\nThis labor-intensive work produces footwear that molds to your unique foot arch and gets more comfortable with every passing step."
   },
   {
@@ -253,7 +253,7 @@ export const BLOGS: BlogPost[] = [
     date: "July 08, 2026",
     readTime: "3 mins read",
     category: "Care Guide",
-    image: "/images/kolhapuri_tan_open_1784182943658.jpg",
+    image: "./images/kolhapuri_tan_open_1784182943658.jpg",
     content: "Because our leather is vegetable-tanned using organic barks instead of harsh chemicals, it is a living material that responds beautifully to care.\n\n1. **Protect from Water**: Since raw leather is porous, direct exposure to heavy rain or water should be avoided. If wet, let them air-dry naturally in a shaded, well-ventilated space. Never use hair dryers or direct sunlight.\n\n2. **Hydrate with Castor Oil**: Rub a few drops of organic Castor Oil (Erandel Tel) onto the leather straps once a month. This nourishes the fibers, prevents dryness/cracking, and deepens the natural tan color to a rich, professional gloss.\n\n3. **Store Smartly**: Always store your sandals in our premium breathable cotton dust bags. Avoid plastic containers, which trap moisture and can cause mold."
   },
   {
@@ -263,7 +263,7 @@ export const BLOGS: BlogPost[] = [
     date: "July 05, 2026",
     readTime: "3 mins read",
     category: "Style",
-    image: "/images/kolhapuri_cream_flower_1784182909014.jpg",
+    image: "./images/kolhapuri_cream_flower_1784182909014.jpg",
     content: "Kolhapuris are incredibly versatile and bridge the gap between traditional ethnic wear and contemporary global fashion.\n\n- **Casual Linen Look**: Pair our classic tan flat sandals with a relaxed white linen shirt and light beige linen trousers for a sophisticated, breezy summer aesthetic.\n\n- **Boho Chic**: Combine our vibrant crimson sandals with a flowing cotton midi dress and vintage silver jewelry for an elegant, artistic look.\n\n- **Festive Fusion**: Style our royal gold-embellished sandals with modern drapes, raw silk tunics, or even premium denim for high-end fusion styling that makes a confident statement at any special occasion."
   },
   {
@@ -273,7 +273,7 @@ export const BLOGS: BlogPost[] = [
     date: "June 28, 2026",
     readTime: "4 mins read",
     category: "Inspiration",
-    image: "/images/kolhapuri_red_pompom_1784182929447.jpg",
+    image: "./images/kolhapuri_red_pompom_1784182929447.jpg",
     content: "Our latest collection is a deep homage to the sacred landmarks and cultural touchstones of Kolhapur.\n\nWe drew inspiration from the divine architecture of the Mahalaxmi Ambabai Temple, extracting the intricate gold tilla and floral carving work seen on our newest red pompom sandal. We also captured the golden hues of sunsets over the Rankala Lake, using subtle copper highlights on custom multi-braid straps.\n\nEvery pair is more than footwear—it is a wearable piece of history, combining regal motifs with modern ergonomic cushioning for a luxurious walk."
   },
   {
@@ -283,7 +283,7 @@ export const BLOGS: BlogPost[] = [
     date: "June 18, 2026",
     readTime: "5 mins read",
     category: "Workshop",
-    image: "/images/artisan_workshop_stack_1784188236319.jpg",
+    image: "./images/artisan_workshop_stack_1784188236319.jpg",
     content: "Step inside our Rankala Lake workshop, where the air is filled with the rich, earthy aroma of natural vegetable-tanned leather and castor oil.\n\nHere, there are no assembly lines. Each artisan sits on a low wooden bench, working diligently on a single pair from start to finish. You will hear the gentle rhythmic tapping of a wooden mallet on leather, the precision slice of a sharp 'Aari' tool, and the soft hum of local stories shared among craftsmen who have honed their skills over decades.\n\nThis dedicated environment is where true luxury is created, step by step, keeping an ancient craft alive and thriving in the modern world."
   }
 ];
