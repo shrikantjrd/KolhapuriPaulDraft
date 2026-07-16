@@ -4,9 +4,25 @@ export const getImagePath = (path: string): string => {
     return path;
   }
   const cleanPath = path.replace(/^\.?\//, '');
+  
+  // 1. Dynamic runtime check for GitHub Pages subpath
+  if (typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+    const pathSegments = window.location.pathname.split('/').filter(Boolean);
+    const repoName = pathSegments[0];
+    if (repoName && !repoName.endsWith('.html')) {
+      return `/${repoName}/${cleanPath}`;
+    }
+  }
+  
+  // 2. Check if there's a defined BASE_URL from Vite
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-  return `${base}${cleanPath}`;
+  if (baseUrl !== '/' && baseUrl !== './') {
+    const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+    return `${base}${cleanPath}`;
+  }
+  
+  // 3. Absolute path / relative path fallback
+  return `./${cleanPath}`;
 };
 
 export interface Product {
