@@ -5,33 +5,24 @@ export const getImagePath = (path: string): string => {
   }
   const cleanPath = path.replace(/^\.?\//, '');
   
-  if (typeof window !== 'undefined') {
-    // Dynamically compute base path from current window location pathname
-    // This handles any deployment subpaths (e.g. GitHub Pages repo name) flawlessly
-    const pathname = window.location.pathname;
-    let baseDir = pathname;
-    
-    // If the pathname ends with a specific file (e.g. index.html), remove the filename segment
-    const lastSlashIndex = pathname.lastIndexOf('/');
-    if (lastSlashIndex !== -1) {
-      const lastSegment = pathname.substring(lastSlashIndex + 1);
-      if (lastSegment.includes('.')) {
-        baseDir = pathname.substring(0, lastSlashIndex + 1);
-      }
+  // 1. Get base from Vite (highly reliable during build)
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  let base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  
+  // 2. Dynamic runtime check for GitHub Pages subpath if BASE_URL is default '/'
+  if (base === '/' && typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+    const pathSegments = window.location.pathname.split('/').filter(Boolean);
+    const repoName = pathSegments[0];
+    if (repoName && !repoName.endsWith('.html')) {
+      base = `/${repoName}/`;
     }
-    
-    // Ensure baseDir ends with a slash and is absolute from domain root
-    if (!baseDir.endsWith('/')) {
-      baseDir += '/';
-    }
-    
-    return `${baseDir}${cleanPath}`;
   }
   
-  // Fallback for non-browser/SSR environments
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-  return `${base}${cleanPath}`;
+  const finalPath = `${base}${cleanPath}`;
+  
+  // Ensure we have a leading slash and no duplicate slashes (e.g., avoid //images becoming protocol-relative)
+  const sanitizedPath = '/' + finalPath.replace(/\/+/g, '/');
+  return sanitizedPath.replace(/\/+/g, '/');
 };
 
 export interface Product {
