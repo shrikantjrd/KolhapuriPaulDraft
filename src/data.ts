@@ -1,3 +1,19 @@
+export const getImagePath = (path: string): string => {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('data:')) {
+    return path;
+  }
+  const cleanPath = path.replace(/^\.?\//, '');
+  if (typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+    const match = window.location.pathname.match(/^\/([^\/]+)/);
+    if (match && match[1]) {
+      const repoName = match[1];
+      return `/${repoName}/${cleanPath}`;
+    }
+  }
+  return `./${cleanPath}`;
+};
+
 export interface Product {
   id: string;
   name: string;

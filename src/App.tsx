@@ -5,7 +5,7 @@ import {
   Instagram, ArrowRight, ChevronRight, ChevronLeft, Trash2, 
   Search, Heart, Award, ArrowDown, ExternalLink, HelpCircle
 } from 'lucide-react';
-import { PRODUCTS, ARTISANS, BLOGS, CARE_GUIDES, Product, BlogPost } from './data';
+import { PRODUCTS, ARTISANS, BLOGS, CARE_GUIDES, Product, BlogPost, getImagePath } from './data';
 
 export default function App() {
   // Navigation & States
@@ -319,7 +319,7 @@ export default function App() {
                     <div key={`${item.product.id}-${item.size}`} className="flex gap-4 p-3 bg-[#130b06] border border-[#d4af37]/10 rounded-sm relative group hover:border-[#d4af37]/30 transition-all">
                       <div className="w-20 h-20 rounded bg-leather-dark overflow-hidden flex-shrink-0 border border-white/5">
                         <img 
-                          src={item.product.images.front} 
+                          src={getImagePath(item.product.images.front)} 
                           alt={item.product.name} 
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
@@ -435,7 +435,7 @@ export default function App() {
               {/* Slow Motion Video / Photo Backdrop */}
               <div className="absolute inset-0 z-0">
                 <img 
-                  src="./images/kolhapuri_royal_banner_1784182889076.jpg" 
+                  src={getImagePath("./images/kolhapuri_royal_banner_1784182889076.jpg")} 
                   alt="Artisan hand stitching leather" 
                   className="w-full h-full object-cover opacity-45 scale-105 animate-pulse-slow"
                 />
@@ -522,7 +522,7 @@ export default function App() {
                   <div key={index} className="group bg-[#130b06] border border-[#d4af37]/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/40 transition-all duration-300">
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-leather-dark">
                       <img 
-                        src={item.img} 
+                        src={getImagePath(item.img)} 
                         alt={item.title} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
@@ -555,7 +555,7 @@ export default function App() {
                 <div className="relative group overflow-hidden border border-[#d4af37]/15 rounded-sm">
                   <div className="absolute inset-0 border-4 border-dashed border-[#d4af37]/10 pointer-events-none z-10 m-2"></div>
                   <img 
-                    src="./images/kolhapur_heritage_palace_1784187835882.jpg" 
+                    src={getImagePath("./images/kolhapur_heritage_palace_1784187835882.jpg")} 
                     alt="Bhavani Mandap Kolhapur Heritage" 
                     className="w-full aspect-[4/3] object-cover group-hover:scale-102 transition-transform duration-700 opacity-80"
                   />
@@ -602,7 +602,7 @@ export default function App() {
                 <div className="lg:col-span-7 relative group overflow-hidden border border-[#d4af37]/25 rounded-sm">
                   <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
                   <img 
-                    src="./images/kolhapuri_royal_banner_1784182889076.jpg" 
+                    src={getImagePath("./images/kolhapuri_royal_banner_1784182889076.jpg")} 
                     alt="Ambabai Floral Sandal Premium Showcase" 
                     className="w-full aspect-[16/10] object-cover group-hover:scale-102 transition-transform duration-700"
                   />
@@ -827,7 +827,7 @@ export default function App() {
                     "./images/artisan_carving_sole_1784188253561.jpg"
                   ].map((url, idx) => (
                     <div key={idx} className="relative aspect-square overflow-hidden group border border-white/5 bg-leather-dark">
-                      <img src={url} alt="Instagram Showcase Post" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={getImagePath(url)} alt="Instagram Showcase Post" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <Instagram className="w-6 h-6 text-[#d4af37]" />
                       </div>
@@ -907,7 +907,7 @@ export default function App() {
                     className="relative aspect-[4/5] w-full overflow-hidden bg-leather-dark cursor-pointer group"
                   >
                     <img 
-                      src={product.images.front} 
+                      src={getImagePath(product.images.front)} 
                       alt={product.name} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
                     />
@@ -1006,7 +1006,7 @@ export default function App() {
                 {/* Active Main Image */}
                 <div className="relative aspect-square bg-[#130b06] border border-[#d4af37]/20 rounded-sm overflow-hidden group">
                   <img 
-                    src={selectedProduct.images[activeProductImage]} 
+                    src={getImagePath(selectedProduct.images[activeProductImage])} 
                     alt={`${selectedProduct.name} main view`} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -1031,7 +1031,7 @@ export default function App() {
                       }`}
                     >
                       <img 
-                        src={selectedProduct.images[imgKey]} 
+                        src={getImagePath(selectedProduct.images[imgKey])} 
                         alt={`${selectedProduct.name} thumb ${imgKey}`} 
                         className="w-full h-full object-cover"
                       />
@@ -1285,7 +1285,7 @@ export default function App() {
                   >
                     <div className="aspect-square rounded overflow-hidden bg-leather-dark mb-4">
                       <img 
-                        src={product.images.front} 
+                        src={getImagePath(product.images.front)} 
                         alt={product.name} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -1398,7 +1398,7 @@ export default function App() {
               {BLOGS.map((blog, idx) => (
                 <div key={blog.id} className="bg-[#130b06] border border-[#d4af37]/10 overflow-hidden rounded-sm flex flex-col justify-between group hover:border-[#d4af37]/45 transition-all duration-300">
                   <div className="aspect-[16/10] relative overflow-hidden bg-leather-dark">
-                    <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" />
+                    <img src={getImagePath(blog.image)} alt={blog.title} className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" />
                     <span className="absolute top-4 left-4 bg-leather-dark/80 border border-[#d4af37]/35 text-[#d4af37] text-[9px] tracking-widest px-2.5 py-1 uppercase rounded-sm">
                       {blog.category}
                     </span>
@@ -1484,7 +1484,7 @@ export default function App() {
                     </div>
 
                     <div className="aspect-[16/9] w-full rounded overflow-hidden bg-leather-dark">
-                      <img src={activeBlog.image} alt={activeBlog.title} className="w-full h-full object-cover" />
+                      <img src={getImagePath(activeBlog.image)} alt={activeBlog.title} className="w-full h-full object-cover" />
                     </div>
 
                     <div className="text-xs sm:text-sm text-white/80 leading-relaxed font-light whitespace-pre-line space-y-4">
