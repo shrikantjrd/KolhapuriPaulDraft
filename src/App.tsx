@@ -435,7 +435,7 @@ export default function App() {
               {/* Slow Motion Video / Photo Backdrop */}
               <div className="absolute inset-0 z-0">
                 <img 
-                  src="/images/kolhapuri_royal_banner_1784182889076.jpg" 
+                  src="./images/kolhapuri_royal_banner_1784182889076.jpg" 
                   alt="Artisan hand stitching leather" 
                   className="w-full h-full object-cover opacity-45 scale-105 animate-pulse-slow"
                 />
@@ -503,19 +503,19 @@ export default function App() {
                   {
                     title: "Ambabai Collection",
                     desc: "Golden floral motifs inspired by local temple craft.",
-                    img: "/images/kolhapuri_red_pompom_1784182929447.jpg",
+                    img: "./images/kolhapuri_red_pompom_1784182929447.jpg",
                     pId: "ambabai-floral"
                   },
                   {
                     title: "Royal Wedding",
                     desc: "Opulent gold threads for glorious festive journeys.",
-                    img: "/images/kolhapuri_royal_banner_1784182889076.jpg",
+                    img: "./images/kolhapuri_royal_banner_1784182889076.jpg",
                     pId: "royal-wedding"
                   },
                   {
                     title: "Classic Heritage",
                     desc: "Timeless barks tanning, rustic natural walnut dye.",
-                    img: "/images/kolhapuri_tan_open_1784182943658.jpg",
+                    img: "./images/kolhapuri_tan_open_1784182943658.jpg",
                     pId: "classic-heritage"
                   }
                 ].map((item, index) => (
@@ -555,7 +555,7 @@ export default function App() {
                 <div className="relative group overflow-hidden border border-[#d4af37]/15 rounded-sm">
                   <div className="absolute inset-0 border-4 border-dashed border-[#d4af37]/10 pointer-events-none z-10 m-2"></div>
                   <img 
-                    src="/images/kolhapur_heritage_palace_1784187835882.jpg" 
+                    src="./images/kolhapur_heritage_palace_1784187835882.jpg" 
                     alt="Bhavani Mandap Kolhapur Heritage" 
                     className="w-full aspect-[4/3] object-cover group-hover:scale-102 transition-transform duration-700 opacity-80"
                   />
@@ -602,7 +602,7 @@ export default function App() {
                 <div className="lg:col-span-7 relative group overflow-hidden border border-[#d4af37]/25 rounded-sm">
                   <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
                   <img 
-                    src="/images/kolhapuri_royal_banner_1784182889076.jpg" 
+                    src="./images/kolhapuri_royal_banner_1784182889076.jpg" 
                     alt="Ambabai Floral Sandal Premium Showcase" 
                     className="w-full aspect-[16/10] object-cover group-hover:scale-102 transition-transform duration-700"
                   />
@@ -821,10 +821,10 @@ export default function App() {
                 {/* Instagram posts visual mockup */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
                   {[
-                    "/images/kolhapuri_tan_open_1784182943658.jpg",
-                    "/images/artisan_stitching_close_1784188217493.jpg",
-                    "/images/artisan_workshop_stack_1784188236319.jpg",
-                    "/images/artisan_carving_sole_1784188253561.jpg"
+                    "./images/kolhapuri_tan_open_1784182943658.jpg",
+                    "./images/artisan_stitching_close_1784188217493.jpg",
+                    "./images/artisan_workshop_stack_1784188236319.jpg",
+                    "./images/artisan_carving_sole_1784188253561.jpg"
                   ].map((url, idx) => (
                     <div key={idx} className="relative aspect-square overflow-hidden group border border-white/5 bg-leather-dark">
                       <img src={url} alt="Instagram Showcase Post" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
