@@ -20,9 +20,9 @@ export const getImagePath = (path: string): string => {
   
   const finalPath = `${base}${cleanPath}`;
   
-  // Ensure we have a leading slash and no duplicate slashes (e.g., avoid //images becoming protocol-relative)
-  const sanitizedPath = '/' + finalPath.replace(/\/+/g, '/');
-  return sanitizedPath.replace(/\/+/g, '/');
+  // Ensure we have a leading slash and no duplicate slashes (collapsing them so we don't form protocol-relative // paths)
+  const sanitizedPath = ('/' + finalPath).replace(/\/+/g, '/');
+  return sanitizedPath;
 };
 
 export interface Product {
