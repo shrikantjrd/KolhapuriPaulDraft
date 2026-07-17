@@ -6,6 +6,8 @@ import imgCreamFlower from './assets/images/kolhapuri_cream_flower_1784182909014
 import imgRedPompom from './assets/images/kolhapuri_red_pompom_1784182929447.jpg';
 import imgRoyalBanner from './assets/images/royal_banner_mogra_1784274952702.jpg';
 import imgTanOpen from './assets/images/kolhapuri_tan_open_1784182943658.jpg';
+import imgClassicWalnut from './assets/images/classic_walnut_sandal_1784275487993.jpg';
+import imgRoyalWeddingGold from './assets/images/royal_wedding_gold_sandal_1784275505163.jpg';
 
 const imageMap: Record<string, string> = {
   'images/artisan_carving_sole_1784188253561.jpg': imgArtisanCarving,
@@ -18,6 +20,8 @@ const imageMap: Record<string, string> = {
   'images/kolhapuri_royal_banner_1784182889076.jpg': imgRoyalBanner,
   'images/royal_banner_mogra_1784274952702.jpg': imgRoyalBanner,
   'images/kolhapuri_tan_open_1784182943658.jpg': imgTanOpen,
+  'images/classic_walnut_sandal_1784275487993.jpg': imgClassicWalnut,
+  'images/royal_wedding_gold_sandal_1784275505163.jpg': imgRoyalWeddingGold,
 };
 
 export const getImagePath = (path: string): string => {
@@ -139,11 +143,11 @@ export const PRODUCTS: Product[] = [
     category: 'Wedding',
     description: "A celebration of regal Indian craftsmanship, the Royal Wedding sandal is woven with premium gold-leaf leather cords. Designed for brides and high-festive celebrations, this pair utilizes our softest triple-cushioned leather sole and double-bound borders for day-long bridal luxury.",
     images: {
-      front: "./images/kolhapuri_royal_banner_1784182889076.jpg",
-      side: "./images/kolhapuri_royal_banner_1784182889076.jpg",
-      back: "./images/kolhapuri_royal_banner_1784182889076.jpg",
-      closeup: "./images/kolhapuri_royal_banner_1784182889076.jpg",
-      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/royal_wedding_gold_sandal_1784275505163.jpg",
+      side: "./images/royal_wedding_gold_sandal_1784275505163.jpg",
+      back: "./images/royal_wedding_gold_sandal_1784275505163.jpg",
+      closeup: "./images/royal_wedding_gold_sandal_1784275505163.jpg",
+      lifestyle: "./images/royal_wedding_gold_sandal_1784275505163.jpg"
     },
     sizes: [5, 6, 7, 8, 9],
     specifications: {
@@ -170,11 +174,11 @@ export const PRODUCTS: Product[] = [
     category: 'Classic',
     description: "The timeless flat that started it all. Featuring the standard hand-stitched leather strap, double-row hand punch work, and dyed a rich walnut hue using local organic barks. It produces the classic wooden sound upon stepping and is a beautiful nod to true legacy fashion.",
     images: {
-      front: "./images/kolhapuri_tan_open_1784182943658.jpg",
-      side: "./images/kolhapuri_tan_open_1784182943658.jpg",
-      back: "./images/kolhapuri_tan_open_1784182943658.jpg",
-      closeup: "./images/kolhapuri_tan_open_1784182943658.jpg",
-      lifestyle: "./images/kolhapuri_royal_banner_1784182889076.jpg"
+      front: "./images/classic_walnut_sandal_1784275487993.jpg",
+      side: "./images/classic_walnut_sandal_1784275487993.jpg",
+      back: "./images/classic_walnut_sandal_1784275487993.jpg",
+      closeup: "./images/classic_walnut_sandal_1784275487993.jpg",
+      lifestyle: "./images/classic_walnut_sandal_1784275487993.jpg"
     },
     sizes: [6, 7, 8, 9],
     specifications: {
