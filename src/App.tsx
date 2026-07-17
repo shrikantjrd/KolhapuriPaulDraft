@@ -139,7 +139,10 @@ export default function App() {
           
           {/* Logo / Brand */}
           <button 
-            onClick={() => setActiveTab('home')}
+            onClick={() => {
+              setActiveTab('home');
+              setMobileMenuOpen(false);
+            }}
             className="flex flex-col items-start focus:outline-none group text-left"
           >
             <span className="font-serif text-2xl sm:text-3xl tracking-[0.15em] text-gold-gradient font-semibold group-hover:opacity-90 transition-opacity">
