@@ -471,7 +471,7 @@ export default function App() {
               {/* Slow Motion Video / Photo Backdrop */}
               <div className="absolute inset-0 z-0">
                 <img 
-                  src={getImagePath("./images/kolhapuri_royal_banner_1784182889076.jpg")} 
+                  src={getImagePath("./images/royal_banner_mogra_1784274952702.jpg")} 
                   alt="Artisan hand stitching leather" 
                   className="w-full h-full object-cover opacity-45 scale-105 animate-pulse-slow"
                 />
@@ -656,7 +656,7 @@ export default function App() {
                 <div className="relative group overflow-hidden border border-[#d4af37]/15 rounded-sm">
                   <div className="absolute inset-0 border-4 border-dashed border-[#d4af37]/10 pointer-events-none z-10 m-2"></div>
                   <img 
-                    src={getImagePath("./images/kolhapur_heritage_palace_1784187835882.jpg")} 
+                    src={getImagePath("./images/heritage_palace_mogra_1784274973797.jpg")} 
                     alt="Bhavani Mandap Kolhapur Heritage" 
                     className="w-full aspect-[4/3] object-cover group-hover:scale-102 transition-transform duration-700 opacity-80"
                   />
@@ -703,7 +703,7 @@ export default function App() {
                 <div className="lg:col-span-7 relative group overflow-hidden border border-[#d4af37]/25 rounded-sm">
                   <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
                   <img 
-                    src={getImagePath("./images/kolhapuri_royal_banner_1784182889076.jpg")} 
+                    src={getImagePath("./images/royal_banner_mogra_1784274952702.jpg")} 
                     alt="Ambabai Floral Sandal Premium Showcase" 
                     className="w-full aspect-[16/10] object-cover group-hover:scale-102 transition-transform duration-700"
                   />

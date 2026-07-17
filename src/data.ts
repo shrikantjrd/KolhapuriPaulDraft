@@ -1,10 +1,10 @@
 import imgArtisanCarving from './assets/images/artisan_carving_sole_1784188253561.jpg';
 import imgArtisanStitching from './assets/images/artisan_stitching_close_1784188217493.jpg';
 import imgArtisanWorkshop from './assets/images/artisan_workshop_stack_1784188236319.jpg';
-import imgHeritagePalace from './assets/images/kolhapur_heritage_palace_1784187835882.jpg';
+import imgHeritagePalace from './assets/images/heritage_palace_mogra_1784274973797.jpg';
 import imgCreamFlower from './assets/images/kolhapuri_cream_flower_1784182909014.jpg';
 import imgRedPompom from './assets/images/kolhapuri_red_pompom_1784182929447.jpg';
-import imgRoyalBanner from './assets/images/kolhapuri_royal_banner_1784182889076.jpg';
+import imgRoyalBanner from './assets/images/royal_banner_mogra_1784274952702.jpg';
 import imgTanOpen from './assets/images/kolhapuri_tan_open_1784182943658.jpg';
 
 const imageMap: Record<string, string> = {
@@ -12,9 +12,11 @@ const imageMap: Record<string, string> = {
   'images/artisan_stitching_close_1784188217493.jpg': imgArtisanStitching,
   'images/artisan_workshop_stack_1784188236319.jpg': imgArtisanWorkshop,
   'images/kolhapur_heritage_palace_1784187835882.jpg': imgHeritagePalace,
+  'images/heritage_palace_mogra_1784274973797.jpg': imgHeritagePalace,
   'images/kolhapuri_cream_flower_1784182909014.jpg': imgCreamFlower,
   'images/kolhapuri_red_pompom_1784182929447.jpg': imgRedPompom,
   'images/kolhapuri_royal_banner_1784182889076.jpg': imgRoyalBanner,
+  'images/royal_banner_mogra_1784274952702.jpg': imgRoyalBanner,
   'images/kolhapuri_tan_open_1784182943658.jpg': imgTanOpen,
 };
 
