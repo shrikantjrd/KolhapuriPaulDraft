@@ -5,6 +5,7 @@ import {
   Instagram, ArrowRight, ChevronRight, ChevronLeft, Trash2, 
   Search, Heart, Award, ArrowDown, ExternalLink, HelpCircle
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PRODUCTS, ARTISANS, BLOGS, CARE_GUIDES, Product, BlogPost, getImagePath } from './data';
 
 export default function App() {
@@ -245,39 +246,65 @@ export default function App() {
         </div>
 
         {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-[#d4af37]/10 bg-[#0f0906]/98 backdrop-blur-lg px-4 py-6 space-y-3 absolute top-20 left-0 w-full shadow-2xl transition-all duration-300">
-            {[
-              { id: 'home', label: 'Home Page' },
-              { id: 'collections', label: 'Collections' },
-              { id: 'product', label: 'Product Details' },
-              { id: 'care', label: 'Leather Care' },
-              { id: 'journal', label: 'Journal & Stories' },
-              { id: 'contact', label: 'Contact Us' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`w-full text-left py-3 px-4 rounded-sm text-sm uppercase tracking-widest transition-all ${
-                  activeTab === tab.id 
-                    ? 'bg-[#1d1109] text-[#d4af37] border-l-2 border-[#d4af37] pl-6 font-semibold' 
-                    : 'text-[#fbf8f3]/80 hover:bg-[#150e0a]'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden border-t border-[#d4af37]/10 bg-[#0f0906]/98 backdrop-blur-lg px-4 py-6 space-y-3 absolute top-20 left-0 w-full shadow-2xl overflow-hidden"
+            >
+              {[
+                { id: 'home', label: 'Home Page' },
+                { id: 'collections', label: 'Collections' },
+                { id: 'product', label: 'Product Details' },
+                { id: 'care', label: 'Leather Care' },
+                { id: 'journal', label: 'Journal & Stories' },
+                { id: 'contact', label: 'Contact Us' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id as any);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left py-3 px-4 rounded-sm text-sm uppercase tracking-widest transition-all ${
+                    activeTab === tab.id 
+                      ? 'bg-[#1d1109] text-[#d4af37] border-l-2 border-[#d4af37] pl-6 font-semibold' 
+                      : 'text-[#fbf8f3]/80 hover:bg-[#150e0a]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Cart Drawer Overlay */}
-      {isCartOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity" onClick={() => setIsCartOpen(false)}></div>
-          
-          <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-md bg-[#0f0906] border-l border-[#d4af37]/20 flex flex-col shadow-2xl relative">
+      <AnimatePresence>
+        {isCartOpen && (
+          <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-black/75 backdrop-blur-sm" 
+              onClick={() => setIsCartOpen(false)}
+            />
+            
+            <div className="absolute inset-y-0 right-0 max-w-full flex pl-10 pointer-events-none">
+              <motion.div 
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+                className="w-screen max-w-md bg-[#0f0906] border-l border-[#d4af37]/20 flex flex-col shadow-2xl relative h-full pointer-events-auto"
+              >
               
               {/* Cart Header */}
               <div className="p-6 border-b border-[#d4af37]/10 flex items-center justify-between bg-[#140c08]">
@@ -402,10 +429,11 @@ export default function App() {
                   </div>
                 </div>
               )}
+              </motion.div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
       {/* Main Container Toast Notification */}
       {cartNotification && (
@@ -428,7 +456,12 @@ export default function App() {
         
         {/* ==================== 1. HOME PAGE ==================== */}
         {activeTab === 'home' && (
-          <div className="animate-fade-in">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             
             {/* Cinematic Hero Section */}
             <section className="relative h-[85vh] sm:h-[90vh] overflow-hidden flex items-center justify-center bg-black">
@@ -447,25 +480,69 @@ export default function App() {
               </div>
 
               {/* Hero Inner Content */}
-              <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1d1109]/80 border border-[#d4af37]/30 rounded-full text-[10px] tracking-[0.25em] text-[#d4af37] uppercase mb-2">
+              <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15,
+                      delayChildren: 0.1
+                    }
+                  }
+                }}
+                className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6"
+              >
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, y: -15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                  className="inline-flex items-center gap-2 px-3 py-1 bg-[#1d1109]/80 border border-[#d4af37]/30 rounded-full text-[10px] tracking-[0.25em] text-[#d4af37] uppercase mb-2"
+                >
                   <Star className="w-3 h-3 fill-[#d4af37] text-[#d4af37]" />
                   <span>The Golden Legacy of Kolhapur</span>
-                </div>
+                </motion.div>
                 
-                <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-[0.15em] text-white font-medium leading-none">
+                <motion.h1 
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                  }}
+                  className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-[0.15em] text-white font-medium leading-none"
+                >
                   KOLHAPURI PAUL
-                </h1>
+                </motion.h1>
                 
-                <p className="font-serif italic text-lg sm:text-2xl text-[#d4af37] tracking-wider font-light">
+                <motion.p 
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.95 },
+                    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
+                  }}
+                  className="font-serif italic text-lg sm:text-2xl text-[#d4af37] tracking-wider font-light"
+                >
                   Every Step Carries A Tradition
-                </p>
+                </motion.p>
                 
-                <p className="max-w-xl mx-auto text-xs sm:text-sm text-[#fbf8f3]/70 leading-relaxed uppercase tracking-widest font-light">
+                <motion.p 
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { duration: 1.0, ease: "easeOut" } }
+                  }}
+                  className="max-w-xl mx-auto text-xs sm:text-sm text-[#fbf8f3]/70 leading-relaxed uppercase tracking-widest font-light"
+                >
                   Premium Handcrafted Vegetable-Tanned Women's Sandals, Built by Royal Heritage Artisans.
-                </p>
+                </motion.p>
 
-                <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                  }}
+                  className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+                >
                   <button 
                     onClick={() => {
                       setActiveTab('collections');
@@ -481,8 +558,8 @@ export default function App() {
                   >
                     Leather Care Guide
                   </button>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/30 text-[10px] tracking-widest uppercase">
                 <span>Scroll to Explore</span>
@@ -498,7 +575,21 @@ export default function App() {
                 <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-4"></div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15
+                    }
+                  }
+                }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
                 {[
                   {
                     title: "Ambabai Collection",
@@ -519,7 +610,14 @@ export default function App() {
                     pId: "classic-heritage"
                   }
                 ].map((item, index) => (
-                  <div key={index} className="group bg-[#130b06] border border-[#d4af37]/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/40 transition-all duration-300">
+                  <motion.div 
+                    key={index} 
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+                    }}
+                    className="group bg-[#130b06] border border-[#d4af37]/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/40 transition-all duration-300"
+                  >
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-leather-dark">
                       <img 
                         src={getImagePath(item.img)} 
@@ -542,9 +640,9 @@ export default function App() {
                         Shop Now <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </section>
 
             {/* Our Story / Heritage Section */}
@@ -837,12 +935,18 @@ export default function App() {
               </div>
             </section>
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 2. COLLECTION PAGE ==================== */}
         {activeTab === 'collections' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12"
+          >
             
             {/* Page Header / Hero Banner */}
             <div className="bg-[#140c08] border border-[#d4af37]/15 p-8 sm:p-12 text-center rounded-sm relative overflow-hidden">
@@ -886,10 +990,28 @@ export default function App() {
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.08
+                  }
+                }
+              }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {filteredProducts.map((product) => (
-                <div 
+                <motion.div 
                   key={product.id} 
+                  variants={{
+                    hidden: { opacity: 0, y: 25 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+                  }}
                   className="group bg-[#130b06] border border-[#d4af37]/10 hover:border-[#d4af37]/40 rounded-sm overflow-hidden flex flex-col justify-between transition-all duration-300 relative shadow-lg"
                 >
                   
@@ -958,9 +1080,9 @@ export default function App() {
                     </div>
                   </div>
 
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Sizing Information Block */}
             <div className="bg-[#130b06] border border-[#d4af37]/10 p-8 rounded-sm grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mt-12">
@@ -991,12 +1113,18 @@ export default function App() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 3. PRODUCT DETAIL PAGE ==================== */}
         {activeTab === 'product' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16"
+          >
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               
@@ -1178,97 +1306,130 @@ export default function App() {
                   >
                     {tab.label}
                     {activeSpecTab === tab.id && (
-                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#d4af37]"></span>
+                      <motion.span 
+                        layoutId="activeSpecUnderline"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#d4af37]"
+                      />
                     )}
                   </button>
                 ))}
               </div>
 
-              <div className="py-8 text-sm leading-relaxed text-[#fbf8f3]/80 max-w-4xl font-light">
-                {activeSpecTab === 'desc' && (
-                  <div className="space-y-4">
-                    <p>{selectedProduct.description}</p>
-                    <ul className="space-y-2 mt-4">
-                      {selectedProduct.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-3 text-xs tracking-wider">
-                          <Check className="w-4.5 h-4.5 text-[#d4af37] flex-shrink-0" />
-                          <span>{h}</span>
-                        </li>
+              <div className="py-8 text-sm leading-relaxed text-[#fbf8f3]/80 max-w-4xl font-light overflow-hidden">
+                <AnimatePresence mode="wait">
+                  {activeSpecTab === 'desc' && (
+                    <motion.div 
+                      key="desc"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="space-y-4"
+                    >
+                      <p>{selectedProduct.description}</p>
+                      <ul className="space-y-2 mt-4">
+                        {selectedProduct.highlights.map((h, i) => (
+                          <li key={i} className="flex gap-3 text-xs tracking-wider">
+                            <Check className="w-4.5 h-4.5 text-[#d4af37] flex-shrink-0" />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+
+                  {activeSpecTab === 'specs' && (
+                    <motion.div 
+                      key="specs"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                    >
+                      {[
+                        { key: "Leather Grade", val: selectedProduct.specifications.leather },
+                        { key: "Finish / Dye Type", val: selectedProduct.specifications.finish },
+                        { key: "Fit Profile", val: selectedProduct.specifications.gender },
+                        { key: "Stitch Craft", val: selectedProduct.specifications.make },
+                        { key: "Heritage Origin", val: selectedProduct.specifications.origin }
+                      ].map((spec, i) => (
+                        <div key={i} className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
+                          <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">{spec.key}</span>
+                          <span className="text-xs text-white/80 mt-1 block">{spec.val}</span>
+                        </div>
                       ))}
-                    </ul>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
 
-                {activeSpecTab === 'specs' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      { key: "Leather Grade", val: selectedProduct.specifications.leather },
-                      { key: "Finish / Dye Type", val: selectedProduct.specifications.finish },
-                      { key: "Fit Profile", val: selectedProduct.specifications.gender },
-                      { key: "Stitch Craft", val: selectedProduct.specifications.make },
-                      { key: "Heritage Origin", val: selectedProduct.specifications.origin }
-                    ].map((spec, i) => (
-                      <div key={i} className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
-                        <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">{spec.key}</span>
-                        <span className="text-xs text-white/80 mt-1 block">{spec.val}</span>
+                  {activeSpecTab === 'packaging' && (
+                    <motion.div 
+                      key="packaging"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="space-y-4"
+                    >
+                      <p className="text-xs uppercase tracking-widest text-white/60">Every dispatch includes our complete unboxing experience suite:</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
+                          <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
+                          <div>
+                            <strong className="text-xs uppercase text-white tracking-widest block">Luxury Gold-Foil Outer Coffer</strong>
+                            <p className="text-xs text-white/50 font-light mt-0.5">High-quality rigid cardboard protects sandals from impact during travel.</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
+                          <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
+                          <div>
+                            <strong className="text-xs uppercase text-white tracking-widest block">Breathable Cotton Dust Bags</strong>
+                            <p className="text-xs text-white/50 font-light mt-0.5">Keeps dust away while allowing natural leather to breathe comfortably.</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
+                          <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
+                          <div>
+                            <strong className="text-xs uppercase text-white tracking-widest block">Artisan Signed Certificate</strong>
+                            <p className="text-xs text-white/50 font-light mt-0.5">Confirms genuine materials and contains the handwritten initials of your craftsman.</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
+                          <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
+                          <div>
+                            <strong className="text-xs uppercase text-white tracking-widest block">20ml Organic Castor Oil Guide</strong>
+                            <p className="text-xs text-white/50 font-light mt-0.5">Specially extracted oil for routine leather maintenance and high shine.</p>
+                          </div>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </motion.div>
+                  )}
 
-                {activeSpecTab === 'packaging' && (
-                  <div className="space-y-4">
-                    <p className="text-xs uppercase tracking-widest text-white/60">Every dispatch includes our complete unboxing experience suite:</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                      <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
-                        <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
-                        <div>
-                          <strong className="text-xs uppercase text-white tracking-widest block">Luxury Gold-Foil Outer Coffer</strong>
-                          <p className="text-xs text-white/50 font-light mt-0.5">High-quality rigid cardboard protects sandals from impact during travel.</p>
+                  {activeSpecTab === 'shipping' && (
+                    <motion.div 
+                      key="shipping"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="space-y-4"
+                    >
+                      <p>
+                        Since each pair is meticulously hand-inspected, we dispatch within 24 hours of receiving your order.
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
+                          <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">Estimated Delivery Timeline</span>
+                          <p className="text-xs text-white/80 mt-1">Metro Cities: 3 - 5 business days<br />Rest of India: 5 - 7 business days</p>
+                        </div>
+                        <div className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
+                          <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">Tracking Information</span>
+                          <p className="text-xs text-white/80 mt-1">A real-time tracking link will be sent directly to your mobile phone via SMS and email immediately upon dispatch.</p>
                         </div>
                       </div>
-                      <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
-                        <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
-                        <div>
-                          <strong className="text-xs uppercase text-white tracking-widest block">Breathable Cotton Dust Bags</strong>
-                          <p className="text-xs text-white/50 font-light mt-0.5">Keeps dust away while allowing natural leather to breathe comfortably.</p>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
-                        <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
-                        <div>
-                          <strong className="text-xs uppercase text-white tracking-widest block">Artisan Signed Certificate</strong>
-                          <p className="text-xs text-white/50 font-light mt-0.5">Confirms genuine materials and contains the handwritten initials of your craftsman.</p>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-[#130b06] border border-[#d4af37]/10 flex gap-3 rounded-sm">
-                        <Check className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
-                        <div>
-                          <strong className="text-xs uppercase text-white tracking-widest block">20ml Organic Castor Oil Guide</strong>
-                          <p className="text-xs text-white/50 font-light mt-0.5">Specially extracted oil for routine leather maintenance and high shine.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeSpecTab === 'shipping' && (
-                  <div className="space-y-4">
-                    <p>
-                      Since each pair is meticulously hand-inspected, we dispatch within 24 hours of receiving your order.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                      <div className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
-                        <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">Estimated Delivery Timeline</span>
-                        <p className="text-xs text-white/80 mt-1">Metro Cities: 3 - 5 business days<br />Rest of India: 5 - 7 business days</p>
-                      </div>
-                      <div className="p-4 bg-[#130b06] border border-white/5 rounded-sm">
-                        <span className="text-[10px] text-[#d4af37] uppercase tracking-widest block font-semibold">Tracking Information</span>
-                        <p className="text-xs text-white/80 mt-1">A real-time tracking link will be sent directly to your mobile phone via SMS and email immediately upon dispatch.</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
@@ -1300,12 +1461,18 @@ export default function App() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 5. LEATHER CARE PAGE ==================== */}
         {activeTab === 'care' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16"
+          >
             
             {/* Page Header */}
             <div className="text-center space-y-4 max-w-2xl mx-auto">
@@ -1379,12 +1546,18 @@ export default function App() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 6. JOURNAL / STORIES PAGE ==================== */}
         {activeTab === 'journal' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16"
+          >
             
             {/* Page Header */}
             <div className="text-center space-y-4 max-w-2xl mx-auto">
@@ -1506,12 +1679,18 @@ export default function App() {
               </div>
             )}
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 7. CONTACT PAGE ==================== */}
         {activeTab === 'contact' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12"
+          >
             
             {/* Page Header */}
             <div className="text-center space-y-4 max-w-2xl mx-auto">
@@ -1673,12 +1852,18 @@ export default function App() {
 
             </div>
 
-          </div>
+          </motion.div>
         )}
 
         {/* ==================== 8. PRIVACY / POLICIES PAGE ==================== */}
         {activeTab === 'privacy' && (
-          <div className="animate-fade-in py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-12"
+          >
             
             {/* Header */}
             <div className="text-center space-y-2">
@@ -1719,7 +1904,7 @@ export default function App() {
 
             </div>
 
-          </div>
+          </motion.div>
         )}
 
       </main>

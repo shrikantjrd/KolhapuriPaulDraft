@@ -84,8 +84,17 @@
 }
 
 .theme-ivory .bg-\[\#1d1109\],
-.theme-ivory .bg-\[\#1d1109\]\/80 {
+.theme-ivory .bg-\[\#1d1109\]\/80,
+.theme-ivory .bg-\[\#0b0604\] {
   background-color: #eae3d5 !important;
+}
+
+.theme-ivory .bg-white\/5 {
+  background-color: rgba(29, 17, 9, 0.05) !important;
+}
+
+.theme-ivory .bg-white\/10 {
+  background-color: rgba(29, 17, 9, 0.1) !important;
 }
 
 /* Text overrides */
@@ -125,7 +134,10 @@
 }
 
 /* Adjust gold text contrast in light theme for better readability */
-.theme-ivory .text-\[\#d4af37\] {
+.theme-ivory .text-\[\#d4af37\],
+.theme-ivory .text-\[\#d4af37\]\/75,
+.theme-ivory .text-\[\#d4af37\]\/80,
+.theme-ivory .text-\[\#d4af37\]\/90 {
   color: #8c6700 !important; /* Rich golden ochre for excellent contrast against light backgrounds */
 }
 
