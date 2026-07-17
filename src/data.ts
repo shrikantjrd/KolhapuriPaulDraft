@@ -1,15 +1,39 @@
+import imgArtisanCarving from './assets/images/artisan_carving_sole_1784188253561.jpg';
+import imgArtisanStitching from './assets/images/artisan_stitching_close_1784188217493.jpg';
+import imgArtisanWorkshop from './assets/images/artisan_workshop_stack_1784188236319.jpg';
+import imgHeritagePalace from './assets/images/kolhapur_heritage_palace_1784187835882.jpg';
+import imgCreamFlower from './assets/images/kolhapuri_cream_flower_1784182909014.jpg';
+import imgRedPompom from './assets/images/kolhapuri_red_pompom_1784182929447.jpg';
+import imgRoyalBanner from './assets/images/kolhapuri_royal_banner_1784182889076.jpg';
+import imgTanOpen from './assets/images/kolhapuri_tan_open_1784182943658.jpg';
+
+const imageMap: Record<string, string> = {
+  'images/artisan_carving_sole_1784188253561.jpg': imgArtisanCarving,
+  'images/artisan_stitching_close_1784188217493.jpg': imgArtisanStitching,
+  'images/artisan_workshop_stack_1784188236319.jpg': imgArtisanWorkshop,
+  'images/kolhapur_heritage_palace_1784187835882.jpg': imgHeritagePalace,
+  'images/kolhapuri_cream_flower_1784182909014.jpg': imgCreamFlower,
+  'images/kolhapuri_red_pompom_1784182929447.jpg': imgRedPompom,
+  'images/kolhapuri_royal_banner_1784182889076.jpg': imgRoyalBanner,
+  'images/kolhapuri_tan_open_1784182943658.jpg': imgTanOpen,
+};
+
 export const getImagePath = (path: string): string => {
   if (!path) return '';
   if (path.startsWith('http') || path.startsWith('data:')) {
     return path;
   }
-  const cleanPath = path.replace(/^\.?\//, '');
   
-  // 1. Get base from Vite (highly reliable during build)
+  // Resolve using the pre-compiled Vite asset imports
+  const cleanPath = path.replace(/^\.?\//, ''); // e.g. "images/kolhapuri_red_pompom_..."
+  if (imageMap[cleanPath]) {
+    return imageMap[cleanPath];
+  }
+  
+  // Fallback to legacy path resolution if not found in map
   const baseUrl = import.meta.env.BASE_URL || '/';
   let base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
   
-  // 2. Dynamic runtime check for GitHub Pages subpath if BASE_URL is default '/'
   if (base === '/' && typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
     const pathSegments = window.location.pathname.split('/').filter(Boolean);
     const repoName = pathSegments[0];
@@ -19,8 +43,6 @@ export const getImagePath = (path: string): string => {
   }
   
   const finalPath = `${base}${cleanPath}`;
-  
-  // Ensure we have a leading slash and no duplicate slashes (collapsing them so we don't form protocol-relative // paths)
   const sanitizedPath = ('/' + finalPath).replace(/\/+/g, '/');
   return sanitizedPath;
 };
