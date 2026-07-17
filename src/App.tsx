@@ -994,9 +994,9 @@ export default function App() {
 
             {/* Product Grid */}
             <motion.div 
+              key={collectionFilter}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              animate="visible"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
